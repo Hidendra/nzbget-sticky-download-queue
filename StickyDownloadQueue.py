@@ -58,8 +58,12 @@
 import os
 import sys
 
-# NB this is python3 - add shim to support python2 and 3 xmlrpc client
-from xmlrpc.client import ServerProxy
+try:
+    # Python 3.x
+    from xmlrpc.client import ServerProxy
+except ImportError:
+    # Python 2.x
+    from xmlrpclib import ServerProxy
 
 
 PP_SUCCESS=93
